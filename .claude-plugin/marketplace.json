@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "job-hunter",
+  "description": "Marketplace for the job-hunter plugin: parse a resume, find matching jobs, tailor a length-matched hallucination-free PDF per job, and auto-fill applications.",
+  "owner": {
+    "name": "rupakc"
+  },
+  "plugins": [
+    {
+      "name": "job-hunter",
+      "description": "Parse a resume, find matching jobs, tailor a length-matched hallucination-free PDF that matches the original's look, and auto-fill applications (assisted or autonomous).",
+      "author": {
+        "name": "rupakc"
+      },
+      "category": "productivity",
+      "homepage": "https://github.com/rupakc/job-hunter",
+      "source": "./job-hunter"
+    }
+  ]
+}
