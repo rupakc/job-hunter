@@ -1,0 +1,58 @@
+{# job-hunter/templates/resume.html.j2 #}
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><style>
+  @page { size: A4; margin: 14mm 16mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Helvetica Neue", Arial, sans-serif; color: #1a1a1a;
+         font-size: 10.5pt; line-height: 1.32; }
+  h1 { font-size: 20pt; margin: 0 0 2pt; letter-spacing: .3pt; }
+  .title { font-size: 11pt; color: #444; margin: 0 0 6pt; }
+  .contact { font-size: 9pt; color: #555; margin-bottom: 10pt; }
+  .contact span::after { content: " · "; color: #bbb; }
+  .contact span:last-child::after { content: ""; }
+  h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: 1pt;
+       border-bottom: 1px solid #ccc; padding-bottom: 2pt;
+       margin: 12pt 0 6pt; color: #222; }
+  .summary { margin: 0 0 4pt; }
+  .skills { margin: 0; padding: 0; list-style: none; }
+  .skills li { display: inline-block; margin: 0 6pt 3pt 0; font-size: 9.5pt; }
+  .job { margin-bottom: 7pt; }
+  .job-head { display: flex; justify-content: space-between; font-weight: 600; }
+  .job-sub { color: #555; font-size: 9pt; margin-bottom: 2pt; }
+  ul.bullets { margin: 2pt 0 0; padding-left: 14pt; }
+  ul.bullets li { margin-bottom: 1.5pt; }
+  .edu-item { display: flex; justify-content: space-between; }
+</style></head><body>
+  <header>
+    <h1>{{ name }}</h1>
+    {% if title %}<div class="title">{{ title }}</div>{% endif %}
+    <div class="contact">
+      {% if contact.email %}<span>{{ contact.email }}</span>{% endif %}
+      {% if contact.phone %}<span>{{ contact.phone }}</span>{% endif %}
+      {% if contact.location %}<span>{{ contact.location }}</span>{% endif %}
+      {% for link in contact.links or [] %}<span>{{ link }}</span>{% endfor %}
+    </div>
+  </header>
+  {% if summary %}<section><h2>Summary</h2>
+    <p class="summary">{{ summary }}</p></section>{% endif %}
+  {% if skills %}<section><h2>Skills</h2>
+    <ul class="skills">{% for s in skills %}<li>{{ s }}</li>{% endfor %}</ul>
+  </section>{% endif %}
+  {% if experience %}<section><h2>Experience</h2>
+    {% for job in experience %}<div class="job">
+      <div class="job-head"><span>{{ job.role }} — {{ job.company }}</span>
+        <span>{{ job.dates }}</span></div>
+      {% if job.location %}<div class="job-sub">{{ job.location }}</div>{% endif %}
+      {% if job.bullets %}<ul class="bullets">
+        {% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+    </div>{% endfor %}
+  </section>{% endif %}
+  {% if education %}<section><h2>Education</h2>
+    {% for e in education %}<div class="edu-item">
+      <span>{{ e.degree }}, {{ e.school }}</span><span>{{ e.dates }}</span>
+    </div>{% endfor %}
+  </section>{% endif %}
+  {% for extra in extras or [] %}<section><h2>{{ extra.heading }}</h2>
+    <p>{{ extra['items'] | join(", ") }}</p></section>{% endfor %}
+</body></html>

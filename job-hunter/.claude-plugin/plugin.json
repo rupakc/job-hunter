@@ -1,0 +1,7 @@
+{
+  "name": "job-hunter",
+  "description": "Parse a resume, find matching jobs, tailor a length-matched hallucination-free PDF per job, and auto-fill applications (assisted or autonomous).",
+  "version": "0.1.0",
+  "author": { "name": "job-hunter contributors" },
+  "keywords": ["resume", "jobs", "applications", "pdf", "automation"]
+}

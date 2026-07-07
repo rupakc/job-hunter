@@ -1,0 +1,16 @@
+{
+  "name": "Jane Doe",
+  "title": "Senior Software Engineer",
+  "contact": {"email": "jane@example.com", "phone": "555-0100",
+              "location": "Berlin, DE", "links": ["github.com/janedoe"]},
+  "summary": "Backend engineer with 8 years building scalable Python services.",
+  "skills": ["Python", "PostgreSQL", "Kubernetes", "AWS", "Django"],
+  "experience": [
+    {"company": "Acme Corp", "role": "Senior Engineer", "dates": "2020-2025",
+     "location": "Berlin", "bullets": ["Led 5 engineers.", "Cut latency 40%."]},
+    {"company": "Beta Inc", "role": "Engineer", "dates": "2017-2020",
+     "location": "Munich", "bullets": ["Built billing service."]}
+  ],
+  "education": [{"school": "TU Munich", "degree": "BSc CS", "dates": "2013-2017"}],
+  "extras": [{"heading": "Languages", "items": ["English", "German"]}]
+}
