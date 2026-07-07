@@ -16,6 +16,9 @@ Rules:
 - Keep it to the profile's `original_page_count`.
 
 Steps:
+0. Ensure a captured template exists at `<appdir>/resume_template.html.j2`. If it
+   does not, run the style-capture skill first so the tailored resume will match
+   the original's formatting, colors, and layout.
 1. Build `resume_data.json` matching the template contract (name, title, contact,
    summary, skills[], experience[{company,role,dates,location,bullets[]}],
    education[], extras[]) using only profile facts, prioritized for this job.

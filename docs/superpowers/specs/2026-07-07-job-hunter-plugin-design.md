@@ -19,8 +19,14 @@ invents nothing, then auto-fill the application form (assisted or autonomous).
    re-emphasize facts present in the original. Every company, title, date, degree,
    and metric in the output must exist in the parsed profile. Enforced by a fact
    verifier that hard-fails on any new fact.
-3. **Professional & engaging** — a single well-designed HTML/CSS template with
-   clean typography and print CSS (built with the frontend-design skill).
+3. **Matches the original's look** — the tailored resume must reproduce the
+   original resume's formatting, color scheme, and layout. A `style-capture` step
+   inspects the original (visually, via the Read tool for PDFs) and generates a
+   per-resume `resume_template.html.j2` mirroring its design; tailored content
+   fills that template. `render_pdf.py` uses `prefer_css_page_size=True` so the
+   template's CSS `@page` size and margins fully control page geometry. The
+   shared `templates/resume.html.j2` is a fallback when the original's design
+   cannot be determined.
 
 ## Tech stack
 

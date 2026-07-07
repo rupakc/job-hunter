@@ -18,6 +18,9 @@ length-matched hallucination-free PDF resume per job, and auto-fills application
 - `/apply <applications/company-role> [--mode assisted|autonomous]`
 
 ## Guarantees
+- **Looks like your original** — the style-capture skill reproduces the original
+  resume's formatting, color scheme, and layout into a per-resume template that
+  each tailored version fills, so the output matches the original's look.
 - **Same length** as the original resume (enforced by `render_pdf.py`).
 - **No invented facts** (enforced by `verify_facts.py`).
 
@@ -27,5 +30,6 @@ length-matched hallucination-free PDF resume per job, and auto-fills application
   CAPTCHA/2FA. Carries ToS/account risk — use at your own discretion.
 
 ## Outputs
-`applications/<company>-<role>/`: `job.md`, `resume_data.json`,
-`tailored_resume.html`, `tailored_resume.pdf`, `answers.md`, `status.json`.
+`applications/<company>-<role>/`: `job.md`, `resume_template.html.j2` (design
+captured from the original), `resume_data.json`, `tailored_resume.html`,
+`tailored_resume.pdf`, `answers.md`, `status.json`.

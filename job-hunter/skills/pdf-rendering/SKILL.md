@@ -5,7 +5,13 @@ description: Use when rendering tailored resume data into a polished PDF that ma
 
 # PDF Rendering
 
-1. Render: `python scripts/render_pdf.py templates/resume.html.j2 \
+Render with the per-resume template captured by the style-capture skill
+(`applications/<company>-<role>/resume_template.html.j2`), so the output matches
+the original resume's formatting, colors, and layout. Fall back to the shared
+`templates/resume.html.j2` only if no captured template exists.
+
+1. Render: `python scripts/render_pdf.py \
+   applications/<company>-<role>/resume_template.html.j2 \
    applications/<company>-<role>/tailored_resume.pdf \
    --data applications/<company>-<role>/resume_data.json \
    --target-pages <original_page_count>`

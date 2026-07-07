@@ -1,6 +1,6 @@
 import pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SKILLS = ["resume-parsing", "job-matching", "resume-tailoring",
+SKILLS = ["resume-parsing", "style-capture", "job-matching", "resume-tailoring",
           "pdf-rendering", "application-filling"]
 
 def test_all_skills_have_valid_frontmatter():
@@ -16,3 +16,12 @@ def test_tailoring_skill_states_no_hallucination():
     text = (ROOT / "skills" / "resume-tailoring" / "SKILL.md").read_text().lower()
     assert "verify_facts" in text
     assert "hallucinat" in text or "invent" in text
+
+def test_pdf_rendering_uses_captured_template():
+    text = (ROOT / "skills" / "pdf-rendering" / "SKILL.md").read_text()
+    assert "resume_template.html.j2" in text
+
+def test_style_capture_produces_matching_template():
+    text = (ROOT / "skills" / "style-capture" / "SKILL.md").read_text().lower()
+    assert "resume_template.html.j2" in text
+    assert "layout" in text and "color" in text

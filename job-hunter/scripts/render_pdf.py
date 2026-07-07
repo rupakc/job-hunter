@@ -36,8 +36,12 @@ def render(input_path: str, pdf_path: str, target_pages, data_path=None) -> dict
         browser = p.chromium.launch()
         page = browser.new_page()
         page.goto(uri, wait_until="networkidle")
+        # prefer_css_page_size lets the template's CSS @page rules (size AND
+        # margins) control the layout, so a tailored resume reproduces the
+        # original's page geometry. No `margin` arg — passing one overrides the
+        # template's @page margins and forces Letter size.
         page.pdf(path=pdf_path, format="A4", print_background=True,
-                 margin={"top": "14mm", "bottom": "14mm", "left": "16mm", "right": "16mm"})
+                 prefer_css_page_size=True)
         browser.close()
     pages = count_pages(pdf_path)
     return {"pdf_path": pdf_path, "page_count": pages, "target_pages": target_pages,
