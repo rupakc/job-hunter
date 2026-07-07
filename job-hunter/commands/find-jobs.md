@@ -1,6 +1,6 @@
 ---
 description: Find and rank jobs matching profile.json across web/LinkedIn/URLs.
-argument-hint: [--top-k N] [--sources web,linkedin,urls] [urls...]
+argument-hint: "[--top-k N] [--sources web,linkedin,urls] [urls...]"
 ---
 
 Ensure `profile.json` exists (run parse-resume first if not).
