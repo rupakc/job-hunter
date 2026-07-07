@@ -1,0 +1,23 @@
+Jane Doe
+Senior Software Engineer
+Berlin, Germany
+jane@example.com | 555-0100 | github.com/janedoe
+
+SUMMARY
+Backend engineer with 8 years building scalable Python services.
+
+SKILLS
+Python, PostgreSQL, Kubernetes, AWS, Django
+
+EXPERIENCE
+Acme Corp - Senior Engineer (2020-2025) Berlin
+Led 5 engineers. Cut latency 40%.
+
+Beta Inc - Engineer (2017-2020) Munich
+Built billing service for 10K users.
+
+EDUCATION
+TU Munich - BSc Computer Science (2013-2017)
+
+LANGUAGES
+English, German
