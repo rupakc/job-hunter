@@ -8,6 +8,13 @@
 
 **Tech Stack:** Python 3, Playwright (Chromium), pdfplumber, python-docx, Jinja2, Claude Code plugin (commands + skills + `.mcp.json`).
 
+> **Amendment (2026-07-07):** Added a `style-capture` skill so each tailored
+> resume reproduces the ORIGINAL resume's formatting, colors, and layout. It
+> generates a per-resume `resume_template.html.j2`; the pdf-rendering skill and
+> commands render that captured template instead of the fixed shared template
+> (now a fallback). `render_pdf.py` uses `prefer_css_page_size=True` (no `margin`
+> arg) so CSS `@page` controls size and margins.
+
 ## Global Constraints
 
 - **Language:** Python 3 for all scripts; no other runtime.
