@@ -97,29 +97,59 @@ Give it your resume (PDF, DOCX, or TXT). It will:
 
 ## Installation
 
+### 1. Install the plugin from the marketplace (recommended)
+
+Install directly from this GitHub repo — no cloning required:
+
 ```bash
-# 1. Clone the repo
-git clone https://github.com/rupakc/job-hunter.git
-cd job-hunter
+# Add the marketplace, then install the plugin
+claude plugin marketplace add rupakc/job-hunter
+claude plugin install job-hunter@job-hunter
+```
 
-# 2. Install Python dependencies
-pip install -r job-hunter/requirements.txt
+Or, from inside a Claude Code session:
 
-# 3. Install the Chromium browser Playwright drives (used for PDF + automation)
+```
+/plugin marketplace add rupakc/job-hunter
+/plugin install job-hunter@job-hunter
+```
+
+This installs at **user scope** by default (available across all your projects).
+Use `--scope project` to install it only for the current project. Verify with:
+
+```bash
+claude plugin list          # job-hunter@job-hunter → Status: ✔ enabled
+```
+
+> **Restart Claude Code / start a new session** after installing — plugins load
+> at session start, so the `/job-hunt` commands appear in the next session.
+
+### 2. Install the runtime dependencies
+
+The plugin's scripts need Python packages and a Chromium browser (used for both
+PDF rendering and browser automation):
+
+```bash
+pip install pdfplumber python-docx jinja2 pyyaml
 playwright install chromium
 ```
 
-Then register the plugin with Claude Code:
+On first use, **approve the `playwright` MCP server** when Claude Code prompts.
 
-- Point Claude Code at the `job-hunter/` directory as a plugin (via your plugin
-  settings / marketplace config), **or** copy `job-hunter/` into your Claude Code
-  plugins directory.
-- On first use, **approve the `playwright` MCP server** when prompted.
-
-Verify the scripts work:
+### Alternative: install from a local clone
 
 ```bash
-cd job-hunter && python -m pytest -q      # expect: all tests passing
+git clone https://github.com/rupakc/job-hunter.git
+claude plugin marketplace add ./job-hunter          # local path is also a valid marketplace
+claude plugin install job-hunter@job-hunter
+pip install -r job-hunter/job-hunter/requirements.txt
+playwright install chromium
+```
+
+Verify the scripts pass their tests:
+
+```bash
+cd job-hunter/job-hunter && python -m pytest -q      # expect: all tests passing
 ```
 
 ---
