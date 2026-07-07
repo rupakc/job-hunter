@@ -19,7 +19,11 @@ Steps:
 1. Build `resume_data.json` matching the template contract (name, title, contact,
    summary, skills[], experience[{company,role,dates,location,bullets[]}],
    education[], extras[]) using only profile facts, prioritized for this job.
-2. Flatten the tailored text (summary + bullets + skills) to `tailored.txt`.
+2. Flatten ALL text from `resume_data.json` to `tailored.txt`: the summary;
+   every experience entry INCLUDING its dates and location, plus its bullets;
+   every education entry INCLUDING its dates; all skills; all extras items;
+   and the contact email and phone. Dates and contact details must be
+   included so `verify_facts.py` can catch any invented ones.
 3. Run `python scripts/verify_facts.py --tailored tailored.txt --profile profile.json`.
    - Exit 1 → it introduced a number/contact not in the original (a
      hallucination). Fix `resume_data.json` and repeat. Do NOT proceed until exit 0.

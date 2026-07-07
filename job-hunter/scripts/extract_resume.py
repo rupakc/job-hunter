@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Extract raw text and page count from a resume (PDF/DOCX/TXT) into profile.json."""
-import argparse, json, os, sys
+import argparse, json, os
 
 LINES_PER_PAGE = 45
 

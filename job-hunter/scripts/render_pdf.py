@@ -37,7 +37,7 @@ def render(input_path: str, pdf_path: str, target_pages, data_path=None) -> dict
         page = browser.new_page()
         page.goto(uri, wait_until="networkidle")
         page.pdf(path=pdf_path, format="A4", print_background=True,
-                 margin={"top": "0", "bottom": "0", "left": "0", "right": "0"})
+                 margin={"top": "14mm", "bottom": "14mm", "left": "16mm", "right": "16mm"})
         browser.close()
     pages = count_pages(pdf_path)
     return {"pdf_path": pdf_path, "page_count": pages, "target_pages": target_pages,
